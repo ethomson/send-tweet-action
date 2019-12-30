@@ -1,0 +1,28 @@
+name: 'Send Tweet Action'
+description: 'Post a tweet to Twitter during a GitHub Actions workflow.'
+author: 'Edward Thomson'
+inputs:
+  status:
+    description: The status ("tweet") to post to twitter.
+  consumer-key:
+    description: >
+      Consumer API key, available in the "Keys and tokens"
+      section of your application in the Twitter Developer site.
+  consumer-secret:
+    description: >
+      Consumer API secret key, available in the "Keys and tokens"
+      section of your application in the Twitter Developer site.
+  access-token:
+    description: >
+      Application access token, available in the "Keys and tokens"
+      section of your application in the Twitter Developer site.
+  access-token-secret:
+    description: >
+      Application access token secret, available in the "Keys and tokens"
+      section of your application in the Twitter Developer site.
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: edit
+  color: blue
