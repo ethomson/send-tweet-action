@@ -4839,10 +4839,10 @@ function run() {
             });
             twitter.post('/statuses/update', { status: core.getInput('status') }, (error, data, response) => {
                 if (error) {
-                    core.setFailed(`Tweet failed! Error data: ${data}`);
+                    core.setFailed(`Tweet failed! Error data: ${error[0].message}`);
                 }
-                console.log(data);
-                console.log(response);
+                console.debug(data);
+                console.debug(response);
             });
         }
         catch (error) {

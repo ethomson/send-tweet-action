@@ -25,11 +25,11 @@ async function run(): Promise<void> {
       {status: core.getInput('status')},
       (error: any, data: any, response: any) => {
         if (error) {
-          core.setFailed(`Tweet failed! Error data: ${data}`)
+          core.setFailed(`Tweet failed! Error data: ${error[0].message}`)
         }
 
-        console.log(data)
-        console.log(response)
+        console.debug(data)
+        console.debug(response)
       }
     )
   } catch (error) {
