@@ -2,7 +2,7 @@ import * as core from '@actions/core'
 import Twitter from 'twitter'
 
 function validateInput(name: string): void {
-  if (!core.getInput(name)) throw new Error(`${name} is a required input`)
+  if (!core.getInput(name)) { core.setFailed(`${name} is a required input`) }
 }
 
 async function run(): Promise<void> {
@@ -23,8 +23,10 @@ async function run(): Promise<void> {
     twitter.post(
       '/statuses/update',
       {status: core.getInput('status')},
-      (error, data, response) => {
-        if (error) throw error
+      (error: any, data: any, response: any) => {
+        if (error) {
+          core.setFailed(`Tweet failed: Error ${error.code}=${error.message}`)
+        }
 
         console.log(data)
         console.log(response)

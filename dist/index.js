@@ -4819,8 +4819,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
 const twitter_1 = __importDefault(__webpack_require__(50));
 function validateInput(name) {
-    if (!core.getInput(name))
-        throw new Error(`${name} is a required input`);
+    if (!core.getInput(name)) {
+        core.setFailed(`${name} is a required input`);
+    }
 }
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -4837,8 +4838,9 @@ function run() {
                 access_token_secret: core.getInput('access-token-secret')
             });
             twitter.post('/statuses/update', { status: core.getInput('status') }, (error, data, response) => {
-                if (error)
-                    throw error;
+                if (error) {
+                    core.setFailed(`Tweet failed: Error ${error.code}=${error.message}`);
+                }
                 console.log(data);
                 console.log(response);
             });
@@ -16992,7 +16994,7 @@ exports.getState = getState;
 /***/ 477:
 /***/ (function(module) {
 
-module.exports = {"_args":[["tough-cookie@2.4.3","/Users/ethomson/Projects/twitter-action"]],"_from":"tough-cookie@2.4.3","_id":"tough-cookie@2.4.3","_inBundle":false,"_integrity":"sha512-Q5srk/4vDM54WJsJio3XNn6K2sCG+CQ8G5Wz6bZhRZoAe/+TxjWB/GlFAnYEbkYVlON9FMk/fE3h2RLpPXo4lQ==","_location":"/request/tough-cookie","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"tough-cookie@2.4.3","name":"tough-cookie","escapedName":"tough-cookie","rawSpec":"2.4.3","saveSpec":null,"fetchSpec":"2.4.3"},"_requiredBy":["/request"],"_resolved":"https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.4.3.tgz","_spec":"2.4.3","_where":"/Users/ethomson/Projects/twitter-action","author":{"name":"Jeremy Stashewsky","email":"jstash@gmail.com"},"bugs":{"url":"https://github.com/salesforce/tough-cookie/issues"},"contributors":[{"name":"Alexander Savin"},{"name":"Ian Livingstone"},{"name":"Ivan Nikulin"},{"name":"Lalit Kapoor"},{"name":"Sam Thompson"},{"name":"Sebastian Mayr"}],"dependencies":{"psl":"^1.1.24","punycode":"^1.4.1"},"description":"RFC6265 Cookies and Cookie Jar for node.js","devDependencies":{"async":"^1.4.2","nyc":"^11.6.0","string.prototype.repeat":"^0.2.0","vows":"^0.8.1"},"engines":{"node":">=0.8"},"files":["lib"],"homepage":"https://github.com/salesforce/tough-cookie","keywords":["HTTP","cookie","cookies","set-cookie","cookiejar","jar","RFC6265","RFC2965"],"license":"BSD-3-Clause","main":"./lib/cookie","name":"tough-cookie","repository":{"type":"git","url":"git://github.com/salesforce/tough-cookie.git"},"scripts":{"cover":"nyc --reporter=lcov --reporter=html vows test/*_test.js","test":"vows test/*_test.js"},"version":"2.4.3"};
+module.exports = {"_args":[["tough-cookie@2.4.3","C:\\users\\timheuer\\documents\\github\\send-tweet-action"]],"_from":"tough-cookie@2.4.3","_id":"tough-cookie@2.4.3","_inBundle":false,"_integrity":"sha512-Q5srk/4vDM54WJsJio3XNn6K2sCG+CQ8G5Wz6bZhRZoAe/+TxjWB/GlFAnYEbkYVlON9FMk/fE3h2RLpPXo4lQ==","_location":"/request/tough-cookie","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"tough-cookie@2.4.3","name":"tough-cookie","escapedName":"tough-cookie","rawSpec":"2.4.3","saveSpec":null,"fetchSpec":"2.4.3"},"_requiredBy":["/request"],"_resolved":"https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.4.3.tgz","_spec":"2.4.3","_where":"C:\\users\\timheuer\\documents\\github\\send-tweet-action","author":{"name":"Jeremy Stashewsky","email":"jstash@gmail.com"},"bugs":{"url":"https://github.com/salesforce/tough-cookie/issues"},"contributors":[{"name":"Alexander Savin"},{"name":"Ian Livingstone"},{"name":"Ivan Nikulin"},{"name":"Lalit Kapoor"},{"name":"Sam Thompson"},{"name":"Sebastian Mayr"}],"dependencies":{"psl":"^1.1.24","punycode":"^1.4.1"},"description":"RFC6265 Cookies and Cookie Jar for node.js","devDependencies":{"async":"^1.4.2","nyc":"^11.6.0","string.prototype.repeat":"^0.2.0","vows":"^0.8.1"},"engines":{"node":">=0.8"},"files":["lib"],"homepage":"https://github.com/salesforce/tough-cookie","keywords":["HTTP","cookie","cookies","set-cookie","cookiejar","jar","RFC6265","RFC2965"],"license":"BSD-3-Clause","main":"./lib/cookie","name":"tough-cookie","repository":{"type":"git","url":"git://github.com/salesforce/tough-cookie.git"},"scripts":{"cover":"nyc --reporter=lcov --reporter=html vows test/*_test.js","test":"vows test/*_test.js"},"version":"2.4.3"};
 
 /***/ }),
 
@@ -18565,7 +18567,7 @@ function write(key, options) {
 /***/ 540:
 /***/ (function(module) {
 
-module.exports = {"_args":[["twitter@1.7.1","/Users/ethomson/Projects/twitter-action"]],"_from":"twitter@1.7.1","_id":"twitter@1.7.1","_inBundle":false,"_integrity":"sha1-B2I3jx3BwFDkj2ZqypBOJLGpYvQ=","_location":"/twitter","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"twitter@1.7.1","name":"twitter","escapedName":"twitter","rawSpec":"1.7.1","saveSpec":null,"fetchSpec":"1.7.1"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/twitter/-/twitter-1.7.1.tgz","_spec":"1.7.1","_where":"/Users/ethomson/Projects/twitter-action","author":{"name":"Desmond Morris","email":"hi@desmondmorris.com"},"bugs":{"url":"https://github.com/desmondmorris/node-twitter/issues"},"dependencies":{"deep-extend":"^0.5.0","request":"^2.72.0"},"description":"Twitter API client library for node.js","devDependencies":{"eslint":"^3.12.0","mocha":"^3.2.0","nock":"^9.0.2"},"homepage":"https://github.com/desmondmorris/node-twitter","keywords":["twitter","streaming","oauth"],"license":"MIT","main":"./lib/twitter","name":"twitter","repository":{"type":"git","url":"git+https://github.com/desmondmorris/node-twitter.git"},"scripts":{"lint":"eslint test/*.js lib/*.js","test":"npm run lint && mocha"},"version":"1.7.1"};
+module.exports = {"_args":[["twitter@1.7.1","C:\\users\\timheuer\\documents\\github\\send-tweet-action"]],"_from":"twitter@1.7.1","_id":"twitter@1.7.1","_inBundle":false,"_integrity":"sha1-B2I3jx3BwFDkj2ZqypBOJLGpYvQ=","_location":"/twitter","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"twitter@1.7.1","name":"twitter","escapedName":"twitter","rawSpec":"1.7.1","saveSpec":null,"fetchSpec":"1.7.1"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/twitter/-/twitter-1.7.1.tgz","_spec":"1.7.1","_where":"C:\\users\\timheuer\\documents\\github\\send-tweet-action","author":{"name":"Desmond Morris","email":"hi@desmondmorris.com"},"bugs":{"url":"https://github.com/desmondmorris/node-twitter/issues"},"dependencies":{"deep-extend":"^0.5.0","request":"^2.72.0"},"description":"Twitter API client library for node.js","devDependencies":{"eslint":"^3.12.0","mocha":"^3.2.0","nock":"^9.0.2"},"homepage":"https://github.com/desmondmorris/node-twitter","keywords":["twitter","streaming","oauth"],"license":"MIT","main":"./lib/twitter","name":"twitter","repository":{"type":"git","url":"git+https://github.com/desmondmorris/node-twitter.git"},"scripts":{"lint":"eslint test/*.js lib/*.js","test":"npm run lint && mocha"},"version":"1.7.1"};
 
 /***/ }),
 
