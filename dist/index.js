@@ -4839,7 +4839,7 @@ function run() {
             });
             twitter.post('/statuses/update', { status: core.getInput('status') }, (error, data, response) => {
                 if (error) {
-                    core.setFailed(`Tweet failed: Error ${error.code}=${error.message}`);
+                    core.setFailed(`Tweet failed! Error data: ${data}`);
                 }
                 console.log(data);
                 console.log(response);
