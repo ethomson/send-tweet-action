@@ -1,4 +1,4 @@
-<a href="https://github.com/ethomson/send-tweet-action/actions"><img alt="send-tweet-action status" src="https://github.com/ethomson/send-tweet-action/workflows/CI/badge.svg"></a>
+<a href="https://github.com/ethomson/send-tweet-action/actions"><img alt="send-tweet-action status" src="https://github.com/ethomson/send-tweet-action/workflows/CI/badge.svg?branch=master&event=push"></a>
 
 # Send a tweet from a GitHub Actions workflow
 
