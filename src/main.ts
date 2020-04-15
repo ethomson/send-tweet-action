@@ -25,7 +25,14 @@ async function run(): Promise<void> {
 
     if (Array.isArray(statusCandidate)) {
       // In case it is an array, select the status using the current date (day of month)
-      const idx = new Date().getDate() % statusCandidate.length
+      const date = new Date()
+      const day = date.getDate() - 1 // For some reasone, getDate is not zero based
+      const hour = date.getHours()
+      const month = date.getMonth()
+      const minutes = date.getMinutes()
+
+      const number = month * 31 * 24 * 60 + day * 24 * 60 + hour * 60 + minutes
+      const idx = number % statusCandidate.length
       status = statusCandidate[idx]
     }
 
