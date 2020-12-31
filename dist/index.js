@@ -4842,9 +4842,9 @@ function run() {
                     core.setFailed(`Tweet failed! Error data: ${error[0].message}`);
                 }
                 console.debug(data);
-                //https://twitter.com/timheuertest/status/1344720089740947456
+                // set the output 'tweeturl' to the resulting status message URI
                 const url = 'https://twitter.com/';
-                core.setOutput('tweeturl', url.concat(data.user.screen_name.toString(), '/status/'.toString(), data.id.toString()));
+                core.setOutput('tweeturl', url.concat(data.user.screen_name.toString(), '/status/'.toString(), data.id_str.toString()));
                 console.debug(response);
             });
         }
