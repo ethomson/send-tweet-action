@@ -2,7 +2,9 @@ import * as core from '@actions/core'
 import Twitter from 'twitter'
 
 function validateInput(name: string): void {
-  if (!core.getInput(name)) { core.setFailed(`${name} is a required input`) }
+  if (!core.getInput(name)) {
+    core.setFailed(`${name} is a required input`)
+  }
 }
 
 async function run(): Promise<void> {
@@ -29,6 +31,16 @@ async function run(): Promise<void> {
         }
 
         console.debug(data)
+        //https://twitter.com/timheuertest/status/1344720089740947456
+        const url = 'https://twitter.com/'
+        core.setOutput(
+          'tweeturl',
+          url.concat(
+            data.user.screen_name.toString(),
+            '/status/'.toString(),
+            data.id.toString()
+          )
+        )
         console.debug(response)
       }
     )
