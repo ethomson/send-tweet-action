@@ -25,7 +25,7 @@ async function run(): Promise<void> {
     twitter.post(
       '/statuses/update',
       {status: core.getInput('status')},
-      (error: any, data: any, response: any) => {
+      (error, data, response) => {
         if (error) {
           core.setFailed(`Tweet failed! Error data: ${error[0].message}`)
         }

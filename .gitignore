@@ -97,3 +97,10 @@ Thumbs.db
 # Ignore built ts files
 __tests__/runner/*
 lib/**/*
+
+### vscode ###
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
