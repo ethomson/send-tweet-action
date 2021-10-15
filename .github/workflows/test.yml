@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '12'
+        cache: true
     - run: |
         npm install
         npm run all
