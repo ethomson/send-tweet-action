@@ -4,8 +4,9 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
       - 'releases/*'
+  workflow_dispatch:
 
 jobs:
   build:
