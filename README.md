@@ -53,3 +53,26 @@ jobs:
 Now whenever you push something to your repository, GitHub Actions
 will tweet on your behalf.
 
+## Use several statuses
+
+Always using the same status may get boring when this action is run regularly. So you can give it several statuses to choose from.
+
+```yml
+name: Send a Tweet
+on: [push]
+jobs:
+  tweet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ethomson/send-tweet-action@v1
+        with:
+          status:
+            - "Being the first item is always cool!"
+            - "It gets less boring whe chosing from different statuses. #noboredom"
+          consumer-key: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
+          consumer-secret: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
+          access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          access-token-secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+```
+
+The status to tweet is chosen "randomly" from the list of tweets provided in the config. Well not really "randomly", it used the current date and time to select one.
